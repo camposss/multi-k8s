@@ -3,18 +3,18 @@ services:
   - docker
 
 before_install:
-  - docker build -t christiancampos/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t camposss/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run christiancampos/react-test npm test -- --coverage
+  - docker run camposss/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t christiancampos/multi-client ./client
-  - docker build -t christiancampos/multi-nginx ./nginx
-  - docker build -t christiancampos/multi-server ./server
-  - docker build -t christiancampos/multi-worker ./worker
+  - docker build -t camposss/multi-client ./client
+  - docker build -t camposss/multi-nginx ./nginx
+  - docker build -t camposss/multi-server ./server
+  - docker build -t camposss/multi-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push christiancampos/multi-client
-  - docker push christiancampos/multi-nginx
-  - docker push christiancampos/multi-server
-  - docker push christiancampos/multi-worker
+  - docker push camposss/multi-client
+  - docker push camposss/multi-nginx
+  - docker push camposss/multi-server
+  - docker push camposss/multi-worker
