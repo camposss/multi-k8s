@@ -11,6 +11,6 @@ docker push camposss/multi-server:$SHA
 docker push camposss/multi-worker:$SHA
 
 kubectl apply -f k8s
-kubectl set image deployments/client-deployment client=camposss/multi-client$SHA
+kubectl set image deployments/client-deployment client=camposss/multi-client:$SHA
 kubectl set image deployments/server-deployment server=camposss/multi-server:$SHA
-kubectl set image deployments/worker-deployment worker=camposss/multi-worker$SHA
+kubectl set image deployments/worker-deployment worker=camposss/multi-worker:$SHA
